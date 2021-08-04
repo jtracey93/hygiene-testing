@@ -1,0 +1,23 @@
+name: "Issue/PR Opened Labeler"
+
+on:
+  issues:
+    types:
+      - opened
+      - reopened
+  pull_request:
+    types:
+      - opened
+      - reopened
+
+jobs:
+  issue-opened-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Issue Opened Labels
+        uses: andymckay/labeler@1.0.3
+        with:
+          add-labels: "triage"
+          remove-labels: "bug"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          
